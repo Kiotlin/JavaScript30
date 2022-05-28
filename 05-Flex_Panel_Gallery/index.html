@@ -38,7 +38,25 @@
     </div>
 
     <script>
-        
+        const panels = document.querySelectorAll('.panel');
+
+        function clickHandler() {
+            // console.log(e.target);
+            this.classList.toggle('open');
+        }
+
+        function transitionEndHandler(e) {
+            // console.log(e);
+            if (e.propertyName.indexOf('flex') !== -1) {
+                this.classList.toggle('open-active');
+            }
+        }
+
+        panels.forEach((p) => {
+            p.addEventListener('click', clickHandler);
+            p.addEventListener('transitionend', transitionEndHandler);
+        });
+
     </script>
 </body>
 </html>
